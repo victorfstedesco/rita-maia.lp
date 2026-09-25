@@ -6,7 +6,7 @@
   <title>Rita Maia | Terapia online em português para brasileiros no exterior</title>
   <meta name="description" content="Rita Maia, psicóloga (CRP SP 06/154166). Terapia online em português para brasileiros que vivem fora do país, no horário do seu fuso. Psicanálise de orientação winnicottiana.">
   <meta property="og:title" content="Rita Maia | Terapia em português, onde você estiver">
-  <meta property="og:description" content="Terapia em português, onde quer que você esteja.">
+  <meta property="og:description" content="A distância não precisa ser solidão.">
   <meta name="theme-color" content="#F7F1EA">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,21 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid #B5705A; outline-offset: 3px; }
 
-    /* FAQ acordeão */
+    /* Etiqueta de bagagem */
+    .tag { position: relative; padding: 20px 26px 20px 52px; clip-path: polygon(22px 0, 100% 0, 100% 100%, 22px 100%, 0 calc(100% - 22px), 0 22px); }
+    .tag::before { content: ""; position: absolute; left: 20px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: #DDE3D6; box-shadow: inset 0 0 0 2px rgba(61,48,44,.18); }
+    @media (min-width: 1101px) {
+      .tag:nth-child(3n+1) { transform: rotate(-1.6deg); }
+      .tag:nth-child(3n+2) { transform: rotate(1.2deg); }
+      .tag:nth-child(3n)   { transform: rotate(-0.6deg); }
+    }
+
+    /* Seletor de fase */
+    .fase-btn[aria-pressed="true"] { background: #3D302C; color: #F7F1EA; border-color: #3D302C; }
+    .fase-panel { transition: opacity .35s ease; }
+    .fase-panel.trocando { opacity: 0; }
+
+    /* FAQ */
     .faq-body { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1), opacity .35s ease; }
     .faq-item[data-open="true"] .faq-body { grid-template-rows: 1fr; opacity: 1; }
     .faq-plus { transition: transform .45s cubic-bezier(.2,.7,.2,1); }
@@ -57,319 +71,282 @@
 
 <body class="bg-cream font-sans text-ink">
 
-  <!-- ================= HERO ================= -->
-  <header class="relative overflow-hidden bg-cream pb-24 md:pb-32">
-    <div aria-hidden="true" class="pointer-events-none select-none absolute inset-x-0 -bottom-[0.22em] whitespace-nowrap text-center font-serif leading-none tracking-[-0.03em] text-sand text-[clamp(90px,19vw,270px)]">Rita Maia</div>
-
-    <nav class="relative flex items-center justify-between gap-5 px-[22px] py-7 md:px-10 lg:px-16" aria-label="Principal">
+  <!-- ================= HERO + RELÓGIOS ================= -->
+  <header class="relative bg-cream">
+    <nav class="flex items-center justify-between gap-5 px-[22px] py-7 md:px-10 lg:px-16" aria-label="Principal">
       <a href="#" class="font-serif text-2xl md:text-[28px]">Rita Maia</a>
-      <div class="flex items-center gap-10 text-sm text-body">
-        <a class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-sm bg-ink px-4 py-3 text-[13px] text-cream hover:opacity-90 md:px-6 md:text-sm" href="#contato">Agendar sessão online</a>
-      </div>
+      <a class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-sm bg-ink px-4 py-3 text-[13px] text-cream hover:opacity-90 md:px-6 md:text-sm" href="#contato">Agendar sessão online</a>
     </nav>
 
-    <div class="relative flex flex-col gap-[52px] px-[22px] pt-7 md:flex-row md:items-start md:gap-12 md:px-10 md:pt-16 lg:gap-20 lg:px-16">
-      <div class="flex flex-1 flex-col gap-6 md:gap-[34px] md:pt-10">
-        <h1 class="font-serif text-[clamp(44px,7vw,100px)] leading-[0.98]">Terapia em português,<br>onde quer que<br>você <em class="text-accent">esteja.</em></h1>
-        <p class="max-w-[460px] text-base font-light leading-[1.75] text-body md:text-lg">Para brasileiros que vivem fora e sentem falta de ser escutados na própria língua. Sessões online, no horário do seu fuso.</p>
-        <div class="flex flex-wrap items-center gap-3.5 md:gap-7">
-          <a href="#contato" class="inline-flex min-h-[48px] w-full items-center justify-between gap-3.5 rounded-sm bg-accent px-[30px] py-5 text-[15px] text-white hover:opacity-90 md:w-auto md:justify-start">
-            Agendar primeira sessão online
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <span class="text-[13px] text-muted">CRP SP 06/154166</span>
+    <div class="px-[22px] pb-16 pt-10 text-center md:px-10 md:pb-20 md:pt-16 lg:px-16 lg:pt-20">
+      <h1 class="mx-auto max-w-[1080px] font-serif text-[clamp(46px,7.4vw,112px)] leading-[0.96]">Terapia em português, onde quer que você <em class="text-accent">esteja.</em></h1>
+      <p class="mx-auto mt-6 max-w-[520px] text-base font-light leading-[1.75] text-body md:mt-8 md:text-lg">Para brasileiros que vivem fora e sentem falta de ser escutados na própria língua. Sessões online, no horário do seu fuso.</p>
+      <div class="mt-8 flex flex-col items-center gap-5 md:mt-10">
+        <a href="#contato" class="inline-flex min-h-[48px] w-full items-center justify-between gap-3.5 rounded-sm bg-accent px-[30px] py-5 text-[15px] text-white hover:opacity-90 md:w-auto md:justify-center">
+          Agendar primeira sessão online
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <div class="flex items-center gap-2.5 text-sm text-body">
+          <span class="flex gap-[2px]" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
+          </span>
+          <span>5,0 no Google, com 349 avaliações</span>
         </div>
       </div>
-
-      <div class="relative ml-[22px] h-[420px] w-[calc(100%-22px)] md:ml-0 md:h-[480px] md:w-[340px] md:flex-none lg:h-[580px] lg:w-[440px]">
-        <div class="absolute -bottom-[22px] left-[-22px] right-[22px] top-[22px] bg-blush md:-bottom-7 md:-left-7 md:right-7 md:top-7"></div>
-        <img src="../foto1.png" alt="Rita Maia, psicóloga" class="absolute inset-0 h-full w-full bg-photo object-cover">
-      </div>
     </div>
+
+    <!-- retrato + relógios -->
+    <div class="px-[22px] md:px-10 lg:px-16">
+      <div class="mb-8 text-center md:mb-10">
+        <h2 class="font-serif text-[30px] leading-tight md:text-[36px]">Que horas são aí?</h2>
+        <p class="mt-2 text-sm text-taupe">Seja qual for o seu fuso, existe um horário que funciona.</p>
+      </div>
+
+      <div class="mx-auto flex max-w-[1180px] flex-col items-center lg:grid lg:grid-cols-[1fr_400px_1fr] lg:items-center lg:gap-14">
+        <ul class="hidden border-t border-line lg:block" aria-hidden="true">
+          <li class="flex items-baseline justify-end gap-5 border-b border-line py-5" data-tz="Europe/Lisbon"><span class="text-sm text-taupe">Lisboa</span><span class="relogio-hora w-[104px] text-right font-serif text-[40px] leading-none">--:--</span></li>
+          <li class="flex items-baseline justify-end gap-5 border-b border-line py-5" data-tz="Europe/London"><span class="text-sm text-taupe">Londres</span><span class="relogio-hora w-[104px] text-right font-serif text-[40px] leading-none">--:--</span></li>
+          <li class="flex items-baseline justify-end gap-5 border-b border-line py-5" data-tz="Europe/Dublin"><span class="text-sm text-taupe">Dublin</span><span class="relogio-hora w-[104px] text-right font-serif text-[40px] leading-none">--:--</span></li>
+          <li class="flex items-baseline justify-end gap-5 border-b border-line py-5" data-tz="Europe/Rome"><span class="text-sm text-taupe">Milão</span><span class="relogio-hora w-[104px] text-right font-serif text-[40px] leading-none">--:--</span></li>
+        </ul>
+
+        <div class="relative w-full max-w-[400px]">
+          <div class="absolute -right-3 -top-3 bottom-3 left-3 rounded-t-full border border-accent/40 md:-right-4 md:-top-4 md:bottom-4 md:left-4"></div>
+          <div class="relative h-[460px] overflow-hidden rounded-t-full bg-photo md:h-[500px]">
+            <img src="../foto1.png" alt="Rita Maia, psicóloga" class="absolute inset-0 h-full w-full object-cover object-[center_20%]">
+          </div>
+        </div>
+
+        <ul class="hidden border-t border-line lg:block" aria-hidden="true">
+          <li class="flex items-baseline gap-5 border-b border-line py-5" data-tz="America/New_York"><span class="relogio-hora w-[104px] font-serif text-[40px] leading-none">--:--</span><span class="text-sm text-taupe">Boston</span></li>
+          <li class="flex items-baseline gap-5 border-b border-line py-5" data-tz="America/Toronto"><span class="relogio-hora w-[104px] font-serif text-[40px] leading-none">--:--</span><span class="text-sm text-taupe">Toronto</span></li>
+          <li class="flex items-baseline gap-5 border-b border-line py-5" data-tz="Asia/Tokyo"><span class="relogio-hora w-[104px] font-serif text-[40px] leading-none">--:--</span><span class="text-sm text-taupe">Tóquio</span></li>
+          <li class="flex items-baseline gap-5 border-b border-line py-5" data-tz="Australia/Sydney"><span class="relogio-hora w-[104px] font-serif text-[40px] leading-none">--:--</span><span class="text-sm text-taupe">Sydney</span></li>
+        </ul>
+      </div>
+
+      <ul class="no-scrollbar -mx-[22px] mt-10 flex snap-x snap-mandatory scroll-pl-[22px] overflow-x-auto border-y border-line px-[22px] md:mx-0 md:mt-12 md:grid md:grid-cols-4 md:overflow-visible md:px-0 lg:hidden">
+        <li class="flex-[0_0_40%] snap-start border-r md:border-b border-line px-5 py-5 md:px-7" data-tz="Europe/Lisbon"><div class="text-[13px] text-taupe">Lisboa</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+        <li class="flex-[0_0_40%] snap-start border-r md:border-b border-line px-5 py-5 md:px-7" data-tz="Europe/London"><div class="text-[13px] text-taupe">Londres</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+        <li class="flex-[0_0_40%] snap-start border-r md:border-b border-line px-5 py-5 md:px-7" data-tz="Europe/Dublin"><div class="text-[13px] text-taupe">Dublin</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+        <li class="flex-[0_0_40%] snap-start border-r md:border-r-0 md:border-b border-line px-5 py-5 md:px-7" data-tz="Europe/Rome"><div class="text-[13px] text-taupe">Milão</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+        <li class="flex-[0_0_40%] snap-start border-r border-line px-5 py-5 md:px-7" data-tz="America/New_York"><div class="text-[13px] text-taupe">Boston</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+        <li class="flex-[0_0_40%] snap-start border-r border-line px-5 py-5 md:px-7" data-tz="America/Toronto"><div class="text-[13px] text-taupe">Toronto</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+        <li class="flex-[0_0_40%] snap-start border-r border-line px-5 py-5 md:px-7" data-tz="Asia/Tokyo"><div class="text-[13px] text-taupe">Tóquio</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+        <li class="flex-[0_0_40%] snap-start  border-line px-5 py-5 md:px-7" data-tz="Australia/Sydney"><div class="text-[13px] text-taupe">Sydney</div><div class="relogio-hora mt-1 font-serif text-[32px] leading-none">--:--</div></li>
+      </ul>
+    </div>
+    <div class="h-[88px] md:h-[110px] lg:h-[140px]"></div>
   </header>
 
   <main>
 
-    <!-- ================= AUTORIDADE ================= -->
-    <section aria-label="Credenciais" class="grid grid-cols-2 border-y border-line bg-cream md:grid-cols-4">
-      <div class="flex flex-col justify-end gap-2.5 border-b border-r border-line px-[22px] py-[26px] md:border-b-0 md:px-7 md:py-8 md:pl-10 lg:px-12 lg:py-10 lg:pl-16">
-        <div class="flex gap-[3px]" aria-hidden="true">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
-        </div>
-        <div class="font-serif text-[clamp(30px,3.1vw,44px)] leading-none">5,0</div>
-        <div class="text-sm text-taupe">Avaliação no Google</div>
-      </div>
-      <div class="flex flex-col justify-end gap-2.5 border-b border-line px-[22px] py-[26px] md:border-b-0 md:border-r md:px-7 md:py-8 lg:px-12 lg:py-10">
-        <div class="font-serif text-[clamp(30px,3.1vw,44px)] leading-none">349</div>
-        <div class="text-sm text-taupe">Pacientes avaliaram</div>
-      </div>
-      <div class="flex flex-col justify-end gap-2.5 border-r border-line px-[22px] py-[26px] md:px-7 md:py-8 lg:px-12 lg:py-10">
-        <div class="font-serif text-[clamp(30px,3.1vw,44px)] leading-none">Desde 2018</div>
-        <div class="text-sm text-taupe">Na prática clínica</div>
-      </div>
-      <div class="flex flex-col justify-end gap-2.5 px-[22px] py-[26px] md:px-7 md:py-8 lg:px-12 lg:py-10">
-        <div class="font-serif text-[clamp(30px,3.1vw,44px)] italic leading-none">Seu fuso</div>
-        <div class="text-sm text-taupe">Horário adaptado ao seu país</div>
-      </div>
-    </section>
-
-    <!-- ================= MANIFESTO ================= -->
-    <section class="flex flex-col gap-10 bg-cream px-[22px] py-[88px] md:flex-row md:items-center md:gap-14 md:px-10 md:py-[110px] lg:gap-24 lg:px-16 lg:py-[140px]">
-      <div class="relative order-2 mb-[34px] h-[360px] w-full bg-sage md:order-none md:mb-0 md:h-[500px] md:w-[380px] md:flex-none lg:h-[600px] lg:w-[520px]">
-        <img src="../foto2.png" alt="Ambiente de atendimento de Rita Maia" class="absolute inset-0 h-full w-full object-cover">
-        <figure class="absolute -bottom-[34px] left-7 right-3.5 bg-cream px-6 py-[22px] shadow-[0_18px_50px_rgba(61,48,44,.08)] md:-right-6 md:bottom-14 md:left-auto md:max-w-[280px] md:px-8 md:py-[30px] lg:-right-14">
-          <blockquote class="font-serif text-[21px] italic leading-[1.25] md:text-[26px]">"Existe um lugar onde você não precisa traduzir o que sente."</blockquote>
-        </figure>
-      </div>
-      <div class="flex flex-1 flex-col gap-6 md:gap-8">
-        <h2 class="font-serif text-[clamp(34px,4.2vw,60px)] leading-[1.06]">Morar fora é um recomeço. Mas ninguém avisa o quanto dá saudade de ser <em class="text-accent">entendida.</em></h2>
-        <p class="max-w-[520px] text-base font-light leading-[1.75] text-body md:text-[17px]">Tem coisas que só fazem sentido na língua em que a gente sente. Aqui você fala sem traduzir, sem explicar o contexto e sem se sentir estrangeira dentro da própria história.</p>
-        <a href="#processo" class="flex min-h-[44px] items-center gap-3 self-start border-b border-ink pb-1.5 text-[15px] hover:opacity-70">
-          Entender como funciona
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- ================= RADAR ================= -->
-    <section id="dores" class="relative overflow-hidden bg-sage px-[22px] pb-24 pt-[88px] md:pb-[120px] md:pt-[110px] xl:h-[900px] xl:p-0">
-      <svg class="absolute left-1/2 top-[228px] h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 md:top-[260px] md:h-[760px] md:w-[760px] xl:top-1/2 xl:h-[920px] xl:w-[920px]" viewBox="0 0 920 920" aria-hidden="true">
-        <g fill="none" stroke="#FFFFFF" stroke-opacity="0.85">
-          <circle cx="460" cy="460" r="170"/><circle cx="460" cy="460" r="265"/><circle cx="460" cy="460" r="360"/><circle cx="460" cy="460" r="455"/>
-        </g>
-      </svg>
-
-      <div class="relative flex items-center justify-center xl:pointer-events-none xl:absolute xl:inset-0">
-        <div class="flex max-w-[420px] flex-col items-center gap-[18px] text-center md:gap-[22px]">
-          <h2 class="font-serif text-[clamp(50px,6vw,84px)] leading-[0.98]">Se você <em class="text-accent">sente</em><br>isso</h2>
-          <div class="h-px w-10 bg-[#8E998A]"></div>
-          <p class="text-[15px] font-light leading-[1.75] text-[#5A5550] md:text-base">Mudar de país mexe com tudo, mesmo quando foi uma escolha desejada. Você não precisa atravessar isso sozinha.</p>
+    <!-- ================= CARTA ================= -->
+    <section class="bg-blush px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
+      <div class="mx-auto flex max-w-[1080px] flex-col gap-12 md:flex-row md:items-start md:gap-16 lg:gap-24">
+        <article class="flex-1">
+          <h2 class="font-serif text-[clamp(38px,4.6vw,64px)] leading-[1.04]">Pra você que mora longe,</h2>
+          <div class="mt-8 flex max-w-[560px] flex-col gap-5 font-serif text-[21px] leading-[1.55] text-[#4E4045] md:mt-10 md:text-[24px]">
+            <p>Morar fora é um recomeço. Mas ninguém avisa o quanto dá saudade de ser entendida sem precisar explicar tudo.</p>
+            <p>Tem coisas que só fazem sentido na língua em que a gente sente. Aqui você fala sem traduzir, sem contextualizar e sem se sentir estrangeira dentro da própria história.</p>
+            <p>Estou do outro lado da tela, no horário que couber no seu dia.</p>
+          </div>
+          <p class="mt-10 font-serif text-[40px] italic leading-none text-accent md:text-[48px]">Rita</p>
+        </article>
+        <div class="relative h-[380px] w-full bg-sage md:mt-24 md:h-[460px] md:w-[320px] md:flex-none lg:w-[380px]">
+          <img src="../foto2.png" alt="Ambiente de atendimento de Rita Maia" class="absolute inset-0 h-full w-full object-cover">
         </div>
       </div>
-
-      <ul class="relative mx-auto mt-12 flex max-w-[680px] flex-wrap justify-center gap-2 md:mt-16 md:gap-2.5 xl:absolute xl:inset-0 xl:m-0 xl:block xl:max-w-none">
-        <li class="flex items-center gap-2.5 rounded-sm bg-cream px-4 py-[11px] text-sm shadow-[0_6px_18px_rgba(61,48,44,.06)] md:gap-3 md:px-[22px] md:py-[13px] md:text-[15px] xl:absolute xl:left-[548px] xl:top-[120px] xl:whitespace-nowrap xl:shadow-none"><span class="h-1.5 w-1.5 flex-none rounded-full bg-[#7F8F7A]"></span>Saudade que aperta sem aviso</li>
-        <li class="flex items-center gap-2.5 rounded-sm bg-cream px-4 py-[11px] text-sm shadow-[0_6px_18px_rgba(61,48,44,.06)] md:gap-3 md:px-[22px] md:py-[13px] md:text-[15px] xl:absolute xl:left-[150px] xl:top-[240px] xl:whitespace-nowrap xl:shadow-none"><span class="h-1.5 w-1.5 flex-none rounded-full bg-accent"></span>Solidão mesmo cercada de gente</li>
-        <li class="flex items-center gap-2.5 rounded-sm bg-cream px-4 py-[11px] text-sm shadow-[0_6px_18px_rgba(61,48,44,.06)] md:gap-3 md:px-[22px] md:py-[13px] md:text-[15px] xl:absolute xl:right-[140px] xl:top-[230px] xl:whitespace-nowrap xl:shadow-none"><span class="h-1.5 w-1.5 flex-none rounded-full bg-[#A993B4]"></span>Cansaço de se explicar o tempo todo</li>
-        <li class="flex items-center gap-2.5 rounded-sm bg-cream px-4 py-[11px] text-sm shadow-[0_6px_18px_rgba(61,48,44,.06)] md:gap-3 md:px-[22px] md:py-[13px] md:text-[15px] xl:absolute xl:left-[96px] xl:top-[462px] xl:whitespace-nowrap xl:shadow-none"><span class="h-1.5 w-1.5 flex-none rounded-full bg-[#7F8F7A]"></span>Culpa por estar longe da família</li>
-        <li class="flex items-center gap-2.5 rounded-sm bg-cream px-4 py-[11px] text-sm shadow-[0_6px_18px_rgba(61,48,44,.06)] md:gap-3 md:px-[22px] md:py-[13px] md:text-[15px] xl:absolute xl:right-[90px] xl:top-[470px] xl:whitespace-nowrap xl:shadow-none"><span class="h-1.5 w-1.5 flex-none rounded-full bg-accent"></span>Medo de ter feito a escolha errada</li>
-        <li class="flex items-center gap-2.5 rounded-sm bg-cream px-4 py-[11px] text-sm shadow-[0_6px_18px_rgba(61,48,44,.06)] md:gap-3 md:px-[22px] md:py-[13px] md:text-[15px] xl:absolute xl:left-[230px] xl:top-[684px] xl:whitespace-nowrap xl:shadow-none"><span class="h-1.5 w-1.5 flex-none rounded-full bg-[#A993B4]"></span>Não pertencer a lugar nenhum</li>
-        <li class="flex items-center gap-2.5 rounded-sm bg-cream px-4 py-[11px] text-sm shadow-[0_6px_18px_rgba(61,48,44,.06)] md:gap-3 md:px-[22px] md:py-[13px] md:text-[15px] xl:absolute xl:right-[220px] xl:top-[692px] xl:whitespace-nowrap xl:shadow-none"><span class="h-1.5 w-1.5 flex-none rounded-full bg-[#7F8F7A]"></span>Ansiedade de recomeçar do zero</li>
-      </ul>
     </section>
 
-    <!-- ================= RECEIOS ================= -->
+    <!-- ================= O QUE NÃO COUBE NA MALA ================= -->
+    <section id="dores" class="bg-sage px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
+      <div class="mx-auto max-w-[1180px]">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
+          <h2 class="max-w-[640px] font-serif text-[clamp(38px,4.6vw,64px)] leading-[1.04]">O que não coube na <em class="text-accent">mala.</em></h2>
+          <p class="max-w-[380px] text-base font-light leading-[1.75] text-[#4F5A4C] md:text-[17px]">Mudar de país mexe com tudo, mesmo quando foi uma escolha desejada. Talvez você esteja levando alguma dessas.</p>
+        </div>
+        <ul class="mt-12 flex flex-col gap-3 md:mt-16 md:flex-row md:flex-wrap md:gap-4 lg:gap-x-5 lg:gap-y-6">
+          <li class="tag bg-cream font-serif text-[22px] leading-tight md:text-[26px]">Saudade que aperta sem aviso</li>
+          <li class="tag bg-blush font-serif text-[22px] leading-tight md:text-[26px]">Solidão mesmo cercada de gente</li>
+          <li class="tag bg-cream font-serif text-[22px] leading-tight md:text-[26px]">Cansaço de se explicar o tempo todo</li>
+          <li class="tag bg-lilac font-serif text-[22px] leading-tight md:text-[26px]">Culpa por estar longe da família</li>
+          <li class="tag bg-cream font-serif text-[22px] leading-tight md:text-[26px]">Não pertencer a lugar nenhum</li>
+          <li class="tag bg-blush font-serif text-[22px] leading-tight md:text-[26px]">Medo de ter feito a escolha errada</li>
+          <li class="tag bg-cream font-serif text-[22px] leading-tight md:text-[26px]">Ansiedade de recomeçar do zero</li>
+          <li class="tag bg-sand font-serif text-[22px] leading-tight md:text-[26px]">Um luto vivido à distância</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= ONDE VOCÊ ESTÁ NESSA HISTÓRIA ================= -->
     <section class="bg-cream px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
-        <h2 class="max-w-[620px] font-serif text-[clamp(36px,4.4vw,62px)] leading-[1.04]">Tudo bem chegar com <em class="text-accent">receio.</em></h2>
-        <p class="max-w-[360px] text-base font-light leading-[1.75] text-body md:text-[17px]">Quem mora fora costuma chegar com alguma dessas dúvidas.</p>
-      </div>
-      <div class="mt-10 grid grid-cols-1 items-start gap-3 md:mt-16 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
-        <article class="flex flex-col justify-between gap-[22px] bg-blush px-6 py-7 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
-          <p class="font-serif text-[26px] italic leading-[1.15] md:text-[30px]">"Terapia online funciona mesmo?"</p>
-          <p class="text-base leading-normal">Funciona. O vínculo acontece na escuta, não na sala.</p>
-        </article>
-        <article class="flex flex-col justify-between gap-[22px] bg-sage px-6 py-7 md:mt-12 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
-          <p class="font-serif text-[26px] italic leading-[1.15] md:text-[30px]">"E o fuso horário?"</p>
-          <p class="text-base leading-normal">A gente encontra um horário que caiba no seu dia.</p>
-        </article>
-        <article class="flex flex-col justify-between gap-[22px] bg-lilac px-6 py-7 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
-          <p class="font-serif text-[26px] italic leading-[1.15] md:text-[30px]">"Já tentei terapia em outro idioma."</p>
-          <p class="text-base leading-normal">Aqui você fala do seu jeito, sem tradução.</p>
-        </article>
-        <article class="flex flex-col justify-between gap-[22px] bg-sand px-6 py-7 md:mt-12 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
-          <p class="font-serif text-[26px] italic leading-[1.15] md:text-[30px]">"Vão me julgar por ter ido embora?"</p>
-          <p class="text-base leading-normal">Aqui não existe julgamento.</p>
-        </article>
-      </div>
-    </section>
+      <div class="mx-auto max-w-[1080px]">
+        <h2 class="font-serif text-[clamp(38px,4.6vw,64px)] leading-[1.04]">Onde você está nessa <em class="text-accent">história?</em></h2>
+        <div class="mt-8 flex flex-wrap gap-2 md:mt-10 md:gap-3" role="group" aria-label="Escolha a fase que mais se parece com a sua">
+          <button type="button" class="fase-btn min-h-[44px] rounded-full border border-ink/30 px-5 py-2.5 text-[15px] transition-colors" data-fase="chegou" aria-pressed="true">Acabei de chegar</button>
+          <button type="button" class="fase-btn min-h-[44px] rounded-full border border-ink/30 px-5 py-2.5 text-[15px] transition-colors" data-fase="anos" aria-pressed="false">Estou fora há anos</button>
+          <button type="button" class="fase-btn min-h-[44px] rounded-full border border-ink/30 px-5 py-2.5 text-[15px] transition-colors" data-fase="casal" aria-pressed="false">Vivemos a dois longe de casa</button>
+          <button type="button" class="fase-btn min-h-[44px] rounded-full border border-ink/30 px-5 py-2.5 text-[15px] transition-colors" data-fase="voltar" aria-pressed="false">Penso em voltar</button>
+        </div>
 
-    <!-- ================= SOBRE ================= -->
-    <section id="sobre" class="flex flex-col bg-sand md:flex-row">
-      <div class="relative min-h-[460px] bg-portrait md:min-h-[720px] md:w-[400px] md:flex-none lg:min-h-[820px] lg:w-[620px]">
-        <img src="../foto3.png" alt="Retrato de Rita Maia" class="absolute inset-0 h-full w-full object-cover">
-        <div class="absolute bottom-0 right-0 flex flex-col gap-1.5 bg-cream px-6 py-[22px] md:px-[34px] md:py-[30px]">
-          <div class="font-serif text-[40px] leading-none text-accent md:text-[52px]">7 anos</div>
-          <div class="text-sm text-taupe">escutando histórias</div>
+        <div id="fase-panel" class="fase-panel mt-10 grid gap-8 border-t border-ink/25 pt-10 md:mt-14 md:grid-cols-[1.3fr_1fr] md:gap-16 md:pt-14" aria-live="polite">
+          <p id="fase-quote" class="font-serif text-[34px] italic leading-[1.12] md:text-[clamp(40px,4.4vw,60px)]">"Tudo é novo, e cansa mais do que eu imaginava."</p>
+          <div class="flex flex-col gap-6 md:pt-3">
+            <p id="fase-resposta" class="text-[17px] font-light leading-[1.75] text-body">Os primeiros meses pedem muito de você. A terapia pode ser o lugar onde você não precisa dar conta de tudo.</p>
+            <a href="#contato" class="flex min-h-[44px] items-center gap-3 self-start border-b border-ink pb-1.5 text-[15px] hover:opacity-70">
+              Conversar sobre isso com a Rita
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="flex flex-1 flex-col justify-center gap-[22px] px-[22px] pb-[88px] pt-16 md:gap-[30px] md:px-12 md:py-20 lg:px-20 lg:py-[110px]">
-        <h2 class="font-serif text-[clamp(52px,6vw,88px)] leading-[0.95]">Sou a Rita <em class="text-accent">Maia.</em></h2>
-        <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Sou psicóloga formada pela Universidade Ibirapuera e atendo desde 2018, com base na psicanálise e forte influência de Winnicott.</p>
-        <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Acompanho brasileiros em diferentes países que carregam a experiência de viver longe. Meu compromisso é simples: um espaço seguro, em português, sem julgamentos e no seu tempo.</p>
-        <blockquote class="max-w-[520px] border-t border-ink/25 pt-[26px] font-serif text-2xl italic leading-[1.25] md:text-[30px]">"Escutar é abrir espaço para o que ainda não foi dito."</blockquote>
-      </div>
     </section>
 
-    <!-- ================= PARA QUEM ================= -->
-    <section class="bg-cream px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
-        <h2 class="max-w-[640px] font-serif text-[clamp(36px,4.4vw,62px)] leading-[1.04]">Cada fase de quem vive fora traz as suas <em class="text-accent">perguntas.</em></h2>
-        <p class="max-w-[320px] text-base font-light leading-[1.75] text-body md:text-[17px]">Talvez uma delas seja a sua.</p>
-      </div>
-      <ul class="mt-9 border-t border-ink/25 md:mt-[72px]">
-        <li class="grid grid-cols-[14px_minmax(0,1fr)] items-center gap-x-3.5 gap-y-2 border-b border-ink/25 py-[26px] md:grid-cols-[28px_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-8 md:py-[38px]">
-          <span class="h-2.5 w-2.5 rounded-full bg-[#E9C3B5] md:h-3.5 md:w-3.5"></span>
-          <h3 class="font-serif text-[34px] leading-[1.02] md:text-[clamp(36px,4vw,60px)]">Quem acabou de chegar</h3>
-          <p class="col-start-2 font-serif text-xl italic leading-[1.3] text-taupe md:col-start-auto md:text-[clamp(20px,2vw,28px)]">"Tudo é novo, e cansa mais do que eu imaginava."</p>
-        </li>
-        <li class="grid grid-cols-[14px_minmax(0,1fr)] items-center gap-x-3.5 gap-y-2 border-b border-ink/25 py-[26px] md:grid-cols-[28px_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-8 md:py-[38px]">
-          <span class="h-2.5 w-2.5 rounded-full bg-[#B9C7B2] md:h-3.5 md:w-3.5"></span>
-          <h3 class="font-serif text-[34px] leading-[1.02] md:text-[clamp(36px,4vw,60px)]">Quem já está há anos</h3>
-          <p class="col-start-2 font-serif text-xl italic leading-[1.3] text-taupe md:col-start-auto md:text-[clamp(20px,2vw,28px)]">"Construí uma vida aqui, mas algo ainda falta."</p>
-        </li>
-        <li class="grid grid-cols-[14px_minmax(0,1fr)] items-center gap-x-3.5 gap-y-2 border-b border-ink/25 py-[26px] md:grid-cols-[28px_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-8 md:py-[38px]">
-          <span class="h-2.5 w-2.5 rounded-full bg-[#CBBBD6] md:h-3.5 md:w-3.5"></span>
-          <h3 class="font-serif text-[34px] leading-[1.02] md:text-[clamp(36px,4vw,60px)]">Casais longe de casa</h3>
-          <p class="col-start-2 font-serif text-xl italic leading-[1.3] text-taupe md:col-start-auto md:text-[clamp(20px,2vw,28px)]">"Só temos um ao outro, e às vezes isso pesa."</p>
-        </li>
-        <li class="grid grid-cols-[14px_minmax(0,1fr)] items-center gap-x-3.5 gap-y-2 border-b border-ink/25 py-[26px] md:grid-cols-[28px_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-8 md:py-[38px]">
-          <span class="h-2.5 w-2.5 rounded-full bg-[#DCC7B0] md:h-3.5 md:w-3.5"></span>
-          <h3 class="font-serif text-[34px] leading-[1.02] md:text-[clamp(36px,4vw,60px)]">Quem pensa em voltar</h3>
-          <p class="col-start-2 font-serif text-xl italic leading-[1.3] text-taupe md:col-start-auto md:text-[clamp(20px,2vw,28px)]">"Não sei mais onde é a minha casa."</p>
-        </li>
-      </ul>
-    </section>
-
-    <!-- ================= PROCESSO (DEGRAUS) ================= -->
+    <!-- ================= COMO FUNCIONA À DISTÂNCIA ================= -->
     <section id="processo" class="bg-sand px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
-        <h2 class="max-w-[640px] font-serif text-[clamp(36px,4.4vw,62px)] leading-[1.04]">Terapia não é um evento. É um <em class="text-accent">percurso.</em></h2>
-        <p class="max-w-[320px] text-base font-light leading-[1.75] text-body md:text-[17px]">Cada passo prepara o próximo. No seu ritmo e no seu fuso.</p>
-      </div>
-      <ol class="mt-11 flex flex-col items-start gap-2.5 md:mt-20 md:grid md:grid-cols-4 md:items-end md:gap-3 lg:gap-4">
-        <li class="flex min-h-[150px] w-[70%] flex-col justify-between gap-[18px] bg-cream px-[22px] py-6 md:h-[250px] md:w-auto md:gap-6 md:px-5 md:py-[26px] lg:px-[30px] lg:py-8">
-          <span class="text-[13px] text-taupe">O começo</span>
-          <div>
-            <h3 class="font-serif text-[26px] leading-[1.1] md:text-[clamp(24px,2.2vw,32px)]">O primeiro contato</h3>
-            <p class="mt-2.5 text-[15px] font-light leading-relaxed text-[#5E4F4A]">Uma conversa pelo WhatsApp, de onde você estiver.</p>
-          </div>
-        </li>
-        <li class="flex min-h-[165px] w-[80%] flex-col justify-between gap-[18px] bg-blush px-[22px] py-6 md:h-[330px] md:w-auto md:gap-6 md:px-5 md:py-[26px] lg:px-[30px] lg:py-8">
-          <span class="text-[13px] text-taupe">O primeiro encontro</span>
-          <div>
-            <h3 class="font-serif text-[26px] leading-[1.1] md:text-[clamp(24px,2.2vw,32px)]">A primeira sessão</h3>
-            <p class="mt-2.5 text-[15px] font-light leading-relaxed text-[#5E4F4A]">Por vídeo, no horário do seu fuso.</p>
-          </div>
-        </li>
-        <li class="flex min-h-[180px] w-[90%] flex-col justify-between gap-[18px] bg-clay px-[22px] py-6 md:h-[410px] md:w-auto md:gap-6 md:px-5 md:py-[26px] lg:px-[30px] lg:py-8">
-          <span class="text-[13px] text-taupe">Ao longo das semanas</span>
-          <div>
-            <h3 class="font-serif text-[26px] leading-[1.1] md:text-[clamp(24px,2.2vw,32px)]">O vínculo se forma</h3>
-            <p class="mt-2.5 text-[15px] font-light leading-relaxed text-[#5E4F4A]">A fala fica mais livre a cada encontro.</p>
-          </div>
-        </li>
-        <li class="flex min-h-[196px] w-full flex-col justify-between gap-[18px] bg-accent px-[22px] py-6 text-white md:h-[490px] md:w-auto md:gap-6 md:px-5 md:py-[26px] lg:px-[30px] lg:py-8">
-          <span class="flex items-center justify-between text-[13px] text-white/75">
-            Com o tempo
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-          </span>
-          <div>
-            <h3 class="font-serif text-[26px] leading-[1.1] md:text-[clamp(24px,2.2vw,32px)]">A história ganha contorno</h3>
-            <p class="mt-2.5 text-[15px] font-light leading-relaxed text-white/90">O que parecia confuso começa a fazer sentido.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- ================= DEPOIMENTOS ================= -->
-    <section class="bg-cream px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
-        <h2 class="font-serif text-[clamp(36px,4.4vw,62px)] leading-[1.04]">Ouvir faz <em class="text-accent">diferença.</em></h2>
-        <a href="#" target="_blank" rel="noopener" class="flex min-h-[44px] items-center gap-3 self-start border-b border-ink pb-1.5 text-[15px] hover:opacity-70 md:self-auto">
-          Ver avaliações no Google
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-        </a>
-      </div>
-      <div class="no-scrollbar -mx-[22px] mt-10 flex snap-x snap-mandatory scroll-pl-[22px] gap-3.5 overflow-x-auto px-[22px] pb-1.5 md:mx-0 md:mt-16 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0">
-        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:px-7 md:py-[34px] lg:px-10 lg:py-11">
-          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
-          <blockquote class="flex-grow font-serif text-[21px] leading-[1.35] lg:text-[25px]">[Depoimento 1 de paciente que mora fora, com autorização]</blockquote>
-          <figcaption class="text-sm text-taupe">[Iniciais], [País]</figcaption>
-        </figure>
-        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:px-7 md:py-[34px] lg:px-10 lg:py-11">
-          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#5F6F5A]" aria-hidden="true">"</span>
-          <blockquote class="flex-grow font-serif text-[21px] leading-[1.35] lg:text-[25px]">[Depoimento 2 de paciente que mora fora, com autorização]</blockquote>
-          <figcaption class="text-sm text-taupe">[Iniciais], [País]</figcaption>
-        </figure>
-        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:px-7 md:py-[34px] lg:px-10 lg:py-11">
-          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#7E6A8C]" aria-hidden="true">"</span>
-          <blockquote class="flex-grow font-serif text-[21px] leading-[1.35] lg:text-[25px]">[Depoimento 3 de paciente que mora fora, com autorização]</blockquote>
-          <figcaption class="text-sm text-taupe">[Iniciais], [País]</figcaption>
-        </figure>
+      <div class="mx-auto max-w-[1180px]">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
+          <h2 class="max-w-[640px] font-serif text-[clamp(38px,4.6vw,64px)] leading-[1.04]">Tão simples quanto uma <em class="text-accent">chamada de vídeo.</em></h2>
+          <p class="max-w-[340px] text-base font-light leading-[1.75] text-body md:text-[17px]">Você só precisa de internet e de um canto onde se sinta à vontade.</p>
+        </div>
+        <ol class="mt-12 grid gap-10 md:mt-20 md:grid-cols-3 md:gap-8 lg:gap-12">
+          <li class="flex flex-col gap-4 border-t-2 border-accent/30 pt-6">
+            <span class="font-serif text-[64px] leading-none text-accent/80 md:text-[80px]">1</span>
+            <h3 class="font-serif text-[28px] leading-tight md:text-[32px]">Me mande uma mensagem</h3>
+            <p class="text-[15px] font-light leading-relaxed text-body">Pelo WhatsApp, de qualquer país.</p>
+          </li>
+          <li class="flex flex-col gap-4 border-t-2 border-accent/60 pt-6">
+            <span class="font-serif text-[64px] leading-none text-accent/80 md:text-[80px]">2</span>
+            <h3 class="font-serif text-[28px] leading-tight md:text-[32px]">Combinamos um horário</h3>
+            <p class="text-[15px] font-light leading-relaxed text-body">Um que funcione no seu fuso, não no meu.</p>
+          </li>
+          <li class="flex flex-col gap-4 border-t-2 border-accent pt-6">
+            <span class="font-serif text-[64px] leading-none text-accent md:text-[80px]">3</span>
+            <h3 class="font-serif text-[28px] leading-tight md:text-[32px]">Conversamos em português</h3>
+            <p class="text-[15px] font-light leading-relaxed text-body">Por vídeo, com sessões de cerca de 50 minutos.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- ================= DÚVIDAS ================= -->
-    <section id="duvidas" class="flex flex-col gap-9 bg-sand px-[22px] py-[88px] md:flex-row md:items-start md:gap-14 md:px-10 md:py-[110px] lg:gap-24 lg:px-16 lg:py-[140px]">
-      <h2 class="font-serif text-[clamp(36px,4.4vw,62px)] leading-[1.04] md:w-[320px] md:flex-none lg:w-[420px]">O que quase todo mundo <em class="text-accent">pergunta.</em></h2>
-      <div class="flex-1" id="faq">
-        <!-- itens gerados abaixo pelo mesmo modelo; o primeiro começa aberto -->
-        <div class="faq-item border-t border-ink/30" data-open="true">
-          <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="true" aria-controls="faq-a0">
-            <span class="text-[17px] font-medium md:text-[19px]">Funciona em qualquer fuso horário?</span>
-            <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-a0" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">Sim. Os horários são combinados de acordo com o país onde você mora, e as sessões acompanham a sua rotina.</p></div></div>
+    <!-- ================= SOBRE (COMPACTO) ================= -->
+    <section id="sobre" class="bg-cream px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
+      <div class="mx-auto flex max-w-[1080px] flex-col gap-10 md:flex-row md:items-center md:gap-16">
+        <div class="relative h-[400px] w-full overflow-hidden bg-portrait md:h-[460px] md:w-[340px] md:flex-none">
+          <img src="../foto3.png" alt="Retrato de Rita Maia" class="absolute inset-0 h-full w-full object-cover">
         </div>
-        <div class="faq-item border-t border-ink/30" data-open="false">
-          <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a1">
-            <span class="text-[17px] font-medium md:text-[19px]">Por qual plataforma são as sessões?</span>
-            <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-a1" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">[Plataforma a confirmar]. Você só precisa de internet estável e um lugar reservado para conversar.</p></div></div>
+        <div class="flex flex-1 flex-col gap-6">
+          <h2 class="font-serif text-[clamp(40px,5vw,72px)] leading-[0.98]">Uma escuta brasileira, onde você <em class="text-accent">estiver.</em></h2>
+          <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Sou a Rita Maia, psicóloga formada pela Universidade Ibirapuera. Atendo desde 2018, com base na psicanálise e forte influência de Winnicott.</p>
+          <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Acompanho brasileiros em diferentes países que carregam a experiência de viver longe. Meu compromisso é oferecer um espaço seguro, em português, sem julgamentos e no seu tempo.</p>
+          <p class="text-sm text-taupe">CRP SP 06/154166</p>
         </div>
-        <div class="faq-item border-t border-ink/30" data-open="false">
-          <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a2">
-            <span class="text-[17px] font-medium md:text-[19px]">Como faço o pagamento estando fora do Brasil?</span>
-            <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-a2" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">[Formas de pagamento internacional a confirmar com a Rita].</p></div></div>
+      </div>
+    </section>
+
+    <!-- ================= DEPOIMENTOS POR PAÍS ================= -->
+    <section class="bg-lilac px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
+      <div class="mx-auto max-w-[1180px]">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
+          <h2 class="font-serif text-[clamp(38px,4.6vw,64px)] leading-[1.04]">De longe, mas <em class="text-accent">perto.</em></h2>
+          <a href="#" target="_blank" rel="noopener" class="flex min-h-[44px] items-center gap-3 self-start border-b border-ink pb-1.5 text-[15px] hover:opacity-70 md:self-auto">
+            Ver avaliações no Google
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
         </div>
-        <div class="faq-item border-t border-ink/30" data-open="false">
-          <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a3">
-            <span class="text-[17px] font-medium md:text-[19px]">Quanto dura cada sessão?</span>
-            <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-a3" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">Cerca de 50 minutos, normalmente uma vez por semana.</p></div></div>
+        <div class="no-scrollbar -mx-[22px] mt-10 flex snap-x snap-mandatory scroll-pl-[22px] gap-3.5 overflow-x-auto px-[22px] pb-1.5 md:mx-0 md:mt-16 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0">
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px]">
+            <div class="border-b border-line px-7 py-5 font-serif text-[30px] leading-none md:text-[36px]">[País]</div>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[21px] leading-[1.4] lg:text-[23px]">[Depoimento de paciente que mora nesse país, com autorização]</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">[Iniciais]</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px]">
+            <div class="border-b border-line px-7 py-5 font-serif text-[30px] leading-none md:text-[36px]">[País]</div>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[21px] leading-[1.4] lg:text-[23px]">[Depoimento de paciente que mora nesse país, com autorização]</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">[Iniciais]</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px]">
+            <div class="border-b border-line px-7 py-5 font-serif text-[30px] leading-none md:text-[36px]">[País]</div>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[21px] leading-[1.4] lg:text-[23px]">[Depoimento de paciente que mora nesse país, com autorização]</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">[Iniciais]</figcaption>
+          </figure>
         </div>
-        <div class="faq-item border-y border-ink/30" data-open="false">
-          <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a4">
-            <span class="text-[17px] font-medium md:text-[19px]">A terapia é sigilosa?</span>
-            <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-a4" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">Sim. Tudo o que é dito em sessão é protegido pelo sigilo profissional.</p></div></div>
+      </div>
+    </section>
+
+    <!-- ================= DÚVIDAS (CENTRALIZADO) ================= -->
+    <section id="duvidas" class="bg-cream px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
+      <div class="mx-auto max-w-[760px]">
+        <h2 class="text-center font-serif text-[clamp(38px,4.6vw,64px)] leading-[1.04]">Dúvidas de quem mora <em class="text-accent">fora.</em></h2>
+        <div class="mt-10 md:mt-14" id="faq">
+          <div class="faq-item border-t border-ink/30" data-open="true">
+            <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="true" aria-controls="faq-a0">
+              <span class="text-[17px] font-medium md:text-[19px]">Funciona em qualquer fuso horário?</span>
+              <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-a0" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">Sim. Os horários são combinados de acordo com o país onde você mora, e as sessões acompanham a sua rotina.</p></div></div>
+          </div>
+          <div class="faq-item border-t border-ink/30" data-open="false">
+            <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a1">
+              <span class="text-[17px] font-medium md:text-[19px]">Por qual plataforma são as sessões?</span>
+              <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-a1" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">[Plataforma a confirmar]. Você só precisa de internet estável e um lugar reservado para conversar.</p></div></div>
+          </div>
+          <div class="faq-item border-t border-ink/30" data-open="false">
+            <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a2">
+              <span class="text-[17px] font-medium md:text-[19px]">Como faço o pagamento estando fora do Brasil?</span>
+              <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-a2" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">[Formas de pagamento internacional a confirmar com a Rita].</p></div></div>
+          </div>
+          <div class="faq-item border-t border-ink/30" data-open="false">
+            <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a3">
+              <span class="text-[17px] font-medium md:text-[19px]">Terapia online funciona tão bem quanto presencial?</span>
+              <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-a3" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">O que sustenta a terapia é o vínculo e a escuta, e isso acontece também pela tela. Para quem mora fora, poder falar na própria língua costuma fazer ainda mais diferença.</p></div></div>
+          </div>
+          <div class="faq-item border-y border-ink/30" data-open="false">
+            <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a4">
+              <span class="text-[17px] font-medium md:text-[19px]">A terapia é sigilosa?</span>
+              <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-a4" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">Sim. Tudo o que é dito em sessão é protegido pelo sigilo profissional.</p></div></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ================= CONTATO ================= -->
-    <section id="contato" class="flex flex-col gap-10 bg-blush px-[22px] py-[88px] md:flex-row md:items-center md:gap-14 md:px-10 md:py-[110px] lg:gap-24 lg:px-16 lg:py-[140px]">
-      <div class="flex flex-1 flex-col gap-7">
-        <h2 class="font-serif text-[clamp(42px,5.3vw,76px)] leading-none">A distância não precisa ser <em class="text-accent">solidão.</em></h2>
-        <p class="max-w-[460px] text-base font-light leading-[1.7] text-body md:text-lg">O primeiro passo costuma ser o mais difícil. Me conte o que te traz e eu já chego sabendo como te receber, onde quer que você esteja.</p>
-      </div>
-      <div class="flex flex-col gap-[22px] bg-cream px-6 py-8 shadow-[0_24px_60px_rgba(61,48,44,.08)] md:w-[400px] md:flex-none md:gap-7 md:px-11 md:py-12 lg:w-[460px]">
-        <div class="flex flex-col gap-3">
-          <label for="motivo" class="text-sm text-taupe">O que te traz até aqui?</label>
-          <select id="motivo" class="min-h-[52px] w-full rounded-none border-0 border-b border-ink bg-transparent px-0.5 py-3.5 font-serif text-[21px] text-ink md:text-[26px]">
-            <option value="saudade">Saudade e dificuldade de adaptação</option>
-            <option value="solidao">Solidão longe de casa</option>
-            <option value="ansiedade">Ansiedade e preocupação constante</option>
-            <option value="relacionamentos">Dificuldades nos relacionamentos</option>
-            <option value="luto">Um luto vivido à distância</option>
-            <option value="outro">Ainda não sei nomear</option>
-          </select>
+    <section id="contato" class="bg-sand px-[22px] py-[88px] md:px-10 md:py-[110px] lg:px-16 lg:py-[140px]">
+      <div class="mx-auto flex max-w-[720px] flex-col items-center gap-8 text-center">
+        <h2 class="font-serif text-[clamp(44px,5.6vw,80px)] leading-none">A distância não precisa ser <em class="text-accent">solidão.</em></h2>
+        <p class="max-w-[480px] text-base font-light leading-[1.7] text-body md:text-lg">Me conte o que te traz e eu já chego sabendo como te receber, onde quer que você esteja.</p>
+        <div class="mt-2 flex w-full flex-col gap-[22px] bg-cream px-6 py-8 text-left shadow-[0_24px_60px_rgba(61,48,44,.08)] md:max-w-[520px] md:gap-7 md:px-11 md:py-12">
+          <div class="flex flex-col gap-3">
+            <label for="motivo" class="text-sm text-taupe">O que te traz até aqui?</label>
+            <select id="motivo" class="min-h-[52px] w-full rounded-none border-0 border-b border-ink bg-transparent px-0.5 py-3.5 font-serif text-[21px] text-ink md:text-[26px]">
+              <option value="saudade">Saudade e dificuldade de adaptação</option>
+              <option value="solidao">Solidão longe de casa</option>
+              <option value="ansiedade">Ansiedade e preocupação constante</option>
+              <option value="relacionamentos">Dificuldades nos relacionamentos</option>
+              <option value="voltar">Dúvida entre ficar ou voltar</option>
+              <option value="luto">Um luto vivido à distância</option>
+              <option value="outro">Ainda não sei nomear</option>
+            </select>
+          </div>
+          <a id="whatsapp-cta" href="#" target="_blank" rel="noopener" class="flex min-h-[48px] w-full items-center justify-between rounded-sm bg-accent px-[26px] py-5 text-[15px] text-white hover:opacity-90">
+            Conversar no WhatsApp
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <p class="text-[13px] leading-relaxed text-muted">A conversa abre com a mensagem já escrita. Você pode editar antes de enviar.</p>
         </div>
-        <a id="whatsapp-cta" href="#" target="_blank" rel="noopener" class="flex min-h-[48px] w-full items-center justify-between rounded-sm bg-accent px-[26px] py-5 text-[15px] text-white hover:opacity-90">
-          Conversar no WhatsApp
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <p class="text-[13px] leading-relaxed text-muted">A conversa abre com a mensagem já escrita. Você pode editar antes de enviar.</p>
       </div>
     </section>
 
@@ -397,35 +374,68 @@
   </footer>
 
   <!-- CTA fixo no celular -->
-  <a href="#contato" class="fixed inset-x-3 bottom-3 z-50 flex min-h-[54px] items-center justify-between gap-2.5 rounded-sm bg-accent px-5 py-4 text-[15px] text-white shadow-[0_14px_34px_rgba(61,48,44,.28)] md:hidden" style="bottom: calc(12px + env(safe-area-inset-bottom, 0px));">
+  <a href="#contato" class="fixed inset-x-3 z-50 flex min-h-[54px] items-center justify-between gap-2.5 rounded-sm bg-accent px-5 py-4 text-[15px] text-white shadow-[0_14px_34px_rgba(61,48,44,.28)] md:hidden" style="bottom: calc(12px + env(safe-area-inset-bottom, 0px));">
     Agendar sessão online
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 
   <script>
+    // ===== Relógios =====
+    function atualizarRelogios() {
+      document.querySelectorAll('[data-tz]').forEach(function (li) {
+        try {
+          li.querySelector('.relogio-hora').textContent = new Intl.DateTimeFormat('pt-BR', {
+            hour: '2-digit', minute: '2-digit', timeZone: li.dataset.tz
+          }).format(new Date());
+        } catch (e) { /* fuso não suportado: mantém --:-- */ }
+      });
+    }
+    atualizarRelogios();
+    setInterval(atualizarRelogios, 30000);
+
+    // ===== Seletor de fase =====
+    const fases = {
+      chegou: ['"Tudo é novo, e cansa mais do que eu imaginava."', 'Os primeiros meses pedem muito de você. A terapia pode ser o lugar onde você não precisa dar conta de tudo.'],
+      anos:   ['"Construí uma vida aqui, mas algo ainda falta."', 'Às vezes a adaptação acontece por fora antes de acontecer por dentro. Dá para olhar para isso com calma.'],
+      casal:  ['"Só temos um ao outro, e às vezes isso pesa."', 'Longe da rede de apoio, a relação carrega mais do que deveria. A terapia de casal ajuda a dividir esse peso.'],
+      voltar: ['"Não sei mais onde é a minha casa."', 'Voltar também é migrar. Pensar nessa decisão com alguém ajuda a escolher com mais clareza.']
+    };
+    const painel = document.getElementById('fase-panel');
+    const quote = document.getElementById('fase-quote');
+    const resposta = document.getElementById('fase-resposta');
+    document.querySelectorAll('.fase-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.fase-btn').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        painel.classList.add('trocando');
+        setTimeout(function () {
+          quote.textContent = fases[btn.dataset.fase][0];
+          resposta.textContent = fases[btn.dataset.fase][1];
+          painel.classList.remove('trocando');
+        }, 180);
+      });
+    });
+
     // ===== WhatsApp =====
     // TROCAR pelo número real da Rita: 55 + DDD + número, só dígitos
     const TELEFONE = '5511000000000';
     const WA = 'https://wa.me/' + TELEFONE;
-
     const motivos = {
       saudade: 'tenho sentido saudade e dificuldade de adaptação',
       solidao: 'tenho me sentido sozinha longe de casa',
       ansiedade: 'tenho lidado com ansiedade e preocupação constante',
       relacionamentos: 'tenho enfrentado dificuldades nos meus relacionamentos',
+      voltar: 'estou em dúvida entre ficar ou voltar',
       luto: 'estou vivendo um luto à distância',
       outro: 'ainda não sei nomear direito o que estou sentindo'
     };
-
     const select = document.getElementById('motivo');
     const cta = document.getElementById('whatsapp-cta');
     function atualizarWhatsApp() {
-      const texto = 'Olá, Rita! Moro fora do Brasil e vim pelo site. Gostaria de agendar uma primeira sessão online porque ' + motivos[select.value] + '.';
-      cta.href = WA + '?text=' + encodeURIComponent(texto);
+      cta.href = WA + '?text=' + encodeURIComponent('Olá, Rita! Moro fora do Brasil e vim pelo site. Gostaria de agendar uma primeira sessão online porque ' + motivos[select.value] + '.');
     }
     select.addEventListener('change', atualizarWhatsApp);
     atualizarWhatsApp();
-
     document.getElementById('whatsapp-footer').href =
       WA + '?text=' + encodeURIComponent('Olá, Rita! Moro fora do Brasil e gostaria de agendar uma sessão online.');
 
