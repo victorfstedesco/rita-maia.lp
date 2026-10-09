@@ -42,6 +42,10 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid #B5705A; outline-offset: 3px; }
 
+    /* WhatsApp flutuante: no celular fica acima da barra "Agendar primeira consulta" */
+    .wa-flutuante { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+    @media (min-width: 761px) { .wa-flutuante { bottom: 32px; } }
+
     /* Etiqueta de bagagem */
     .tag { position: relative; padding: 20px 26px 20px 52px; clip-path: polygon(22px 0, 100% 0, 100% 100%, 22px 100%, 0 calc(100% - 22px), 0 22px); }
     .tag::before { content: ""; position: absolute; left: 20px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: #DDE3D6; box-shadow: inset 0 0 0 2px rgba(61,48,44,.18); }
@@ -97,7 +101,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="#B5705A"><path d="M12 2l3 6.9 7.5.7-5.6 5 1.6 7.4L12 18l-6.5 4 1.6-7.4-5.6-5 7.5-.7z"/></svg>
           </span>
-          <span>5,0 no Google, com 349 avaliações</span>
+          <span>5,0 de avaliação no Google</span>
         </div>
       </div>
     </div>
@@ -255,15 +259,16 @@
         </div>
         <div class="flex flex-1 flex-col gap-6">
           <h2 class="font-serif text-[clamp(40px,5vw,72px)] leading-[0.98]">Uma escuta brasileira, onde você <em class="text-accent">estiver.</em></h2>
-          <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Sou a Rita Maia, psicóloga formada pela Universidade Ibirapuera. Atendo desde 2018, com base na psicanálise e forte influência de Winnicott.</p>
+          <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Sou a Rita Maia, psicóloga formada pela Universidade Ibirapuera, também com formação em Administração. Atendo desde 2018, com base na psicanálise e forte influência de Winnicott.</p>
           <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Acompanho brasileiros em diferentes países que carregam a experiência de viver longe. Meu compromisso é oferecer um espaço seguro, em português, sem julgamentos e no seu tempo.</p>
+          <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Fora do consultório, sou mãe e avó de duas lindas crianças.</p>
           <p class="text-sm text-taupe">CRP SP 06/154166</p>
         </div>
       </div>
       </div>
     </section>
 
-    <!-- ================= DEPOIMENTOS POR PAÍS ================= -->
+    <!-- ================= DEPOIMENTOS ================= -->
     <section class="bg-lilac py-[88px] md:py-[110px] lg:py-[140px]">
       <div class="mx-auto w-full max-w-[1440px] px-[22px] md:px-10 lg:px-16">
       <div class="mx-auto max-w-[1180px]">
@@ -274,22 +279,110 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
           </a>
         </div>
-        <div class="no-scrollbar -mx-[22px] mt-10 flex snap-x snap-mandatory scroll-pl-[22px] gap-3.5 overflow-x-auto px-[22px] pb-1.5 md:mx-0 md:mt-16 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0">
-          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px]">
-            <div class="border-b border-line px-7 py-5 font-serif text-[30px] leading-none md:text-[36px]">[País]</div>
-            <blockquote class="flex-grow px-7 py-6 font-serif text-[21px] leading-[1.4] lg:text-[23px]">[Depoimento de paciente que mora nesse país, com autorização]</blockquote>
-            <figcaption class="px-7 pb-6 text-sm text-taupe">[Iniciais]</figcaption>
+        <div id="depoimentos-trilho" class="no-scrollbar -mx-[22px] mt-10 flex snap-x snap-mandatory scroll-pl-[22px] gap-3.5 overflow-x-auto px-[22px] pb-1.5 md:mx-0 md:mt-16 md:scroll-pl-0 md:gap-6 md:px-0">
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Uma ótima profissional, muito atenciosa e profunda. Tem sempre a palavra certa ou a melhor forma de enxergar as situações.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Mariana A. · Avaliação no Google</figcaption>
           </figure>
-          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px]">
-            <div class="border-b border-line px-7 py-5 font-serif text-[30px] leading-none md:text-[36px]">[País]</div>
-            <blockquote class="flex-grow px-7 py-6 font-serif text-[21px] leading-[1.4] lg:text-[23px]">[Depoimento de paciente que mora nesse país, com autorização]</blockquote>
-            <figcaption class="px-7 pb-6 text-sm text-taupe">[Iniciais]</figcaption>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional, acolhedora e com escuta ativa. Demonstra verdadeiro amor pelo que faz, realizando seu trabalho com excelência e sempre embasada em estudos e artigos sérios.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Maisa D. · Avaliação no Google</figcaption>
           </figure>
-          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px]">
-            <div class="border-b border-line px-7 py-5 font-serif text-[30px] leading-none md:text-[36px]">[País]</div>
-            <blockquote class="flex-grow px-7 py-6 font-serif text-[21px] leading-[1.4] lg:text-[23px]">[Depoimento de paciente que mora nesse país, com autorização]</blockquote>
-            <figcaption class="px-7 pb-6 text-sm text-taupe">[Iniciais]</figcaption>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Tem sido fundamental na minha jornada. Graças à sua condução tão centrada e atenciosa, hoje eu consigo me valorizar mais, me encontrar de verdade e, principalmente, colocar limites e dizer 'não' quando preciso. Obrigada por ser essa profissional incrível e por me dar as ferramentas para construir uma versão mais forte de mim.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Silviane S. · Avaliação no Google</figcaption>
           </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional. Meu marido faz terapia com a Rita e, desde que iniciou o tratamento, noto muita evolução pessoal e, consequentemente, no relacionamento familiar. Muita gratidão.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Fernanda T. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Rita nasceu pra isso! Me fez entender minha origem e me ajudou a compreender muitas coisas da minha infância. Me ajuda a olhar para as situações com outra lente. Fazer terapia com ela foi uma das melhores decisões que tomei.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Sayonara M. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">A Rita é uma excelente profissional, muito atenciosa, cautelosa nas observações, com considerações pertinentes que ajudam no processo de autoconhecimento. Transmite confiança e é uma pessoa muito amável e acolhedora.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Priscila F. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional! Faço acompanhamento com a Drª Rita há quase 4 anos e só tenho a agradecer por todo o cuidado, atenção e dedicação ao longo desse tempo. É uma profissional extremamente empática, acolhedora e competente, que realmente se importa com o bem-estar dos seus pacientes.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Darlene C. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Falar da Rita é muito fácil. Rita sabe ouvir, sabe te fazer refletir, sabe cuidar e principalmente incentivar. Para a Rita não tem hora. Para ela o mais importante é cuidar do seu paciente. Sempre com um sorriso no rosto e pronto para cuidar. Ótima profissional e uma pessoa maravilhosa!</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Lucas V. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional! A psicóloga Rita Maia tem conhecimento em Psicanálise, e sabe realmente do que está falando, conduz os atendimentos com ética, sensibilidade e acolhimento. Sua escuta qualificada proporciona um ambiente seguro para reflexões e desenvolvimento pessoal. Recomendo seu trabalho pela competência técnica, dedicação e compromisso com a saúde mental.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">André B. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Encontrar um profissional de saúde mental que realmente faça a diferença em nossa jornada não é uma tarefa simples. Por isso, faço questão de registrar publicamente minha admiração, respeito e profunda gratidão pelo trabalho realizado pela terapeuta Rita.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Andre L. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Rita é acolhedora, me encorajou a ser minha melhor versão.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Jonathan C. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Passar em processo terapêutico com a Rita Maia tem sido uma experiência verdadeiramente transformadora. Ela cria um espaço seguro, livre de julgamentos, onde me sinto totalmente à vontade para me abrir. (…) Recomendo o trabalho dela de olhos fechados para qualquer pessoa que esteja buscando um suporte terapêutico de excelência e um ser humano incrível para caminhar junto nessa jornada!</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Zeca L. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Profissional e pessoa incrível. As sessões são leves, com muita harmonia, sabedoria e paz. Coração fica quentinho…</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Debora C. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional, tivemos um acompanhamento de quase 1 ano. Tive uma evolução incrível com os direcionamentos e conselhos dela. Além disso um ser humano incrível que sabe te ouvir e dá espaço para você falar. Super recomendo.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Dilherme S. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional, atenciosa e competente. Conduz as sessões com muito cuidado e respeito, fazendo perguntas certeiras que me ajudaram a me conhecer melhor. Recomendo de olhos fechados!</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Vanessa R. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">A Rita é uma profissional extremamente competente, muito acolhedora e dedicada. (…) Seu trabalho faz diferença de forma positiva, me trouxe direcionamento, segurança e apoio em momentos importantes. É uma psicóloga que transmite confiança e realmente se preocupa com o bem-estar dos pacientes.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Karen T. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Rita é uma excelente profissional. Muito humana, acolhedora e sensata. Com escuta atenta, ela me ajudou em várias questões e contribuiu muito para meu desenvolvimento pessoal. Recomendo de coração!</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Beatriz Z. · Avaliação no Google</figcaption>
+          </figure>
+          <figure class="flex min-h-[300px] flex-[0_0_84%] snap-start flex-col bg-cream md:min-h-[340px] md:flex-[0_0_calc((100%-24px)/2)] lg:flex-[0_0_calc((100%-48px)/3)]">
+            <span class="mt-8 h-[30px] px-7 font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+            <blockquote class="flex-grow px-7 py-6 font-serif text-[19px] leading-[1.4] lg:text-[21px]">Profissional extremamente dedicada, prestativa e comprometida com o paciente, disposição para ajudar em qualquer momento, boa comunicação e colaboração no dia a dia, contribuindo positivamente, fazendo com que realmente tenha um resultado positivo nas terapias e nas reflexões. Super indico.</blockquote>
+            <figcaption class="px-7 pb-6 text-sm text-taupe">Joelma S. · Avaliação no Google</figcaption>
+          </figure>
+        </div>
+        <div class="mt-8 flex items-center gap-6">
+          <div class="relative h-px flex-1 bg-ink/20" role="progressbar" aria-label="Progresso dos depoimentos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="depoimentos-progresso">
+            <div id="depoimentos-barra" class="absolute inset-y-[-1px] left-0 w-0 bg-accent transition-[width] duration-300 ease-out"></div>
+          </div>
+          <div class="hidden gap-3 md:flex">
+            <button type="button" id="depoimentos-anterior" aria-label="Depoimentos anteriores" class="flex h-12 w-12 items-center justify-center rounded-full border border-ink/40 hover:bg-ink hover:text-cream">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            </button>
+            <button type="button" id="depoimentos-proximo" aria-label="Próximos depoimentos" class="flex h-12 w-12 items-center justify-center rounded-full border border-ink/40 hover:bg-ink hover:text-cream">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
       </div>
       </div>
@@ -346,7 +439,7 @@
       <div class="mx-auto w-full max-w-[1440px] px-[22px] md:px-10 lg:px-16">
       <div class="mx-auto flex max-w-[720px] flex-col items-center gap-8 text-center">
         <h2 class="font-serif text-[clamp(44px,5.6vw,80px)] leading-none">A distância não precisa ser <em class="text-accent">solidão.</em></h2>
-        <p class="max-w-[480px] text-base font-light leading-[1.7] text-body md:text-lg">Me conte o que te traz e eu já chego sabendo como te receber, onde quer que você esteja.</p>
+        <p class="max-w-[480px] text-base font-light leading-[1.7] text-body md:text-lg">O primeiro passo pode ser difícil. Compartilhe comigo o que te trouxe à psicoterapia e, a partir disso, construiremos juntos um espaço de acolhimento e cuidado, onde quer que você esteja.</p>
         <div class="mt-2 flex w-full flex-col gap-[22px] bg-cream px-6 py-8 text-left shadow-[0_24px_60px_rgba(61,48,44,.08)] md:max-w-[520px] md:gap-7 md:px-11 md:py-12">
           <div class="flex flex-col gap-3">
             <label for="motivo" class="text-sm text-taupe">O que te traz até aqui?</label>
@@ -358,6 +451,7 @@
               <option value="voltar">Dúvida entre ficar ou voltar</option>
               <option value="luto">Um luto vivido à distância</option>
               <option value="outro">Ainda não sei nomear</option>
+              <option value="outro-assunto">Outro assunto</option>
             </select>
           </div>
           <a id="whatsapp-cta" href="#" target="_blank" rel="noopener" class="flex min-h-[48px] w-full items-center justify-between rounded-sm bg-accent px-[26px] py-5 text-[15px] text-white hover:opacity-90">
@@ -385,6 +479,7 @@
         <span class="text-paper/55">Contato</span>
         <a id="whatsapp-footer" class="self-start hover:opacity-70" href="#" target="_blank" rel="noopener">WhatsApp</a>
         <a class="self-start hover:opacity-70" href="https://www.instagram.com/psicoritamaia/" target="_blank" rel="noopener">@psicoritamaia</a>
+        <a class="self-start [overflow-wrap:anywhere] hover:opacity-70" href="mailto:psicoritamaia@gmail.com">psicoritamaia@gmail.com</a>
       </div>
     </div>
     <div aria-hidden="true" class="whitespace-nowrap font-serif text-[clamp(88px,16vw,230px)] leading-[0.8] tracking-[-0.03em]">Rita <em>Maia</em></div>
@@ -399,6 +494,11 @@
   <a href="#contato" class="fixed inset-x-3 z-50 flex min-h-[54px] items-center justify-between gap-2.5 rounded-sm bg-accent px-5 py-4 text-[15px] text-white shadow-[0_14px_34px_rgba(61,48,44,.28)] md:hidden" style="bottom: calc(12px + env(safe-area-inset-bottom, 0px));">
     Agendar sessão online
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+
+  <!-- WhatsApp flutuante -->
+  <a id="whatsapp-flutuante" href="#" target="_blank" rel="noopener" aria-label="Conversar com a Rita no WhatsApp" class="wa-flutuante fixed right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-forest text-cream ring-2 ring-cream shadow-[0_14px_34px_rgba(38,28,25,.3)] transition-transform hover:scale-105 md:right-8 md:h-16 md:w-16">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.01c0-5.19 4.23-9.41 9.42-9.41 2.51 0 4.88.98 6.65 2.76a9.35 9.35 0 0 1 2.75 6.66c0 5.19-4.23 9.41-9.41 9.41zm8.01-17.42A11.26 11.26 0 0 0 12.05.75C5.8.75.72 5.83.72 12.08c0 2 .52 3.95 1.52 5.66L.62 23.62l6.02-1.58a11.3 11.3 0 0 0 5.4 1.38h.01c6.24 0 11.33-5.08 11.33-11.33 0-3.03-1.18-5.87-3.32-8.01z"/></svg>
   </a>
 
   <script>
@@ -439,17 +539,18 @@
     });
 
     // ===== WhatsApp =====
-    // TROCAR pelo número real da Rita: 55 + DDD + número, só dígitos
-    const TELEFONE = '5511000000000';
+    // 55 + DDD + número, só dígitos
+    const TELEFONE = '5511914977210';
     const WA = 'https://wa.me/' + TELEFONE;
     const motivos = {
       saudade: 'tenho sentido saudade e dificuldade de adaptação',
-      solidao: 'tenho me sentido sozinha longe de casa',
+      solidao: 'tenho sentido solidão longe de casa',
       ansiedade: 'tenho lidado com ansiedade e preocupação constante',
       relacionamentos: 'tenho enfrentado dificuldades nos meus relacionamentos',
       voltar: 'estou em dúvida entre ficar ou voltar',
       luto: 'estou vivendo um luto à distância',
-      outro: 'ainda não sei nomear direito o que estou sentindo'
+      outro: 'ainda não sei nomear direito o que estou sentindo',
+      'outro-assunto': 'gostaria de conversar sobre outro assunto'
     };
     const select = document.getElementById('motivo');
     const cta = document.getElementById('whatsapp-cta');
@@ -458,8 +559,27 @@
     }
     select.addEventListener('change', atualizarWhatsApp);
     atualizarWhatsApp();
-    document.getElementById('whatsapp-footer').href =
-      WA + '?text=' + encodeURIComponent('Olá, Rita! Moro fora do Brasil e gostaria de agendar uma sessão online.');
+    const msgPadrao = WA + '?text=' + encodeURIComponent('Olá, Rita! Moro fora do Brasil e gostaria de agendar uma sessão online.');
+    document.getElementById('whatsapp-footer').href = msgPadrao;
+    document.getElementById('whatsapp-flutuante').href = msgPadrao;
+
+    // ===== Depoimentos (carrossel) =====
+    const trilho = document.getElementById('depoimentos-trilho');
+    function passo() { return trilho.firstElementChild.offsetWidth + parseFloat(getComputedStyle(trilho).columnGap); }
+    document.getElementById('depoimentos-anterior').addEventListener('click', function () { trilho.scrollBy({ left: -passo(), behavior: 'smooth' }); });
+    document.getElementById('depoimentos-proximo').addEventListener('click', function () { trilho.scrollBy({ left: passo(), behavior: 'smooth' }); });
+
+    const progresso = document.getElementById('depoimentos-progresso');
+    const barra = document.getElementById('depoimentos-barra');
+    function atualizarProgresso() {
+      // largura = parte visível + quanto já rolou, em relação ao total
+      const pct = Math.min(100, (trilho.scrollLeft + trilho.clientWidth) / trilho.scrollWidth * 100);
+      barra.style.width = pct + '%';
+      progresso.setAttribute('aria-valuenow', Math.round(pct));
+    }
+    trilho.addEventListener('scroll', atualizarProgresso, { passive: true });
+    window.addEventListener('resize', atualizarProgresso);
+    atualizarProgresso();
 
     // ===== FAQ (um aberto por vez) =====
     const itens = document.querySelectorAll('.faq-item');

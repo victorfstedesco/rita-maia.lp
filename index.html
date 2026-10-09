@@ -48,6 +48,10 @@
     .faq-plus { transition: transform .45s cubic-bezier(.2,.7,.2,1); }
     .faq-item[data-open="true"] .faq-plus { transform: rotate(45deg); }
 
+    /* WhatsApp flutuante: no celular fica acima da barra "Agendar primeira consulta" */
+    .wa-flutuante { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+    @media (min-width: 761px) { .wa-flutuante { bottom: 32px; } }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition: none !important; }
@@ -113,8 +117,8 @@
         <div class="text-sm text-taupe">Avaliação no Google</div>
       </div>
       <div class="flex flex-col justify-end gap-2.5 border-b border-line px-[22px] py-[26px] md:border-b-0 md:border-r md:px-7 md:py-8 lg:px-12 lg:py-10">
-        <div class="font-serif text-[clamp(30px,3.1vw,44px)] leading-none">349</div>
-        <div class="text-sm text-taupe">Pacientes avaliaram</div>
+        <div class="font-serif text-[clamp(30px,3.1vw,44px)] leading-none">Online</div>
+        <div class="text-sm text-taupe">e presencial em Jundiaí</div>
       </div>
       <div class="flex flex-col justify-end gap-2.5 border-r border-line px-[22px] py-[26px] md:px-7 md:py-8 lg:px-12 lg:py-10">
         <div class="font-serif text-[clamp(30px,3.1vw,44px)] leading-none">Desde 2018</div>
@@ -140,7 +144,7 @@
         <h2 class="font-serif text-[clamp(34px,4.2vw,60px)] leading-[1.06]">Quando algo se repete e começa a pesar, não é falta de esforço. É uma história pedindo para ser <em class="text-accent">ouvida.</em></h2>
         <p class="max-w-[520px] text-base font-light leading-[1.75] text-body md:text-[17px]">A psicanálise não entrega respostas prontas. Ela abre espaço para que você entenda a raiz do que dói, no seu tempo, com alguém que escuta sem julgar.</p>
         <a href="#processo" class="flex min-h-[44px] items-center gap-3 self-start border-b border-ink pb-1.5 text-[15px] hover:opacity-70">
-          Entender como funciona
+          Entenda como funciona
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -159,7 +163,7 @@
         <div class="flex max-w-[420px] flex-col items-center gap-[18px] text-center md:gap-[22px]">
           <h2 class="font-serif text-[clamp(50px,6vw,84px)] leading-[0.98]">Se você <em class="text-accent">sente</em><br>isso</h2>
           <div class="h-px w-10 bg-[#8E998A]"></div>
-          <p class="text-[15px] font-light leading-[1.75] text-[#5A5550] md:text-base">Você não precisa atravessar nada disso sozinha. A terapia ajuda a entender o que se repete e a construir mudanças que duram.</p>
+          <p class="text-[15px] font-light leading-[1.75] text-[#5A5550] md:text-base">Você não precisa atravessar nada disso sozinho. A terapia ajuda a entender o que se repete e a construir mudanças que duram.</p>
         </div>
       </div>
 
@@ -177,9 +181,8 @@
     <!-- ================= RECEIOS ================= -->
     <section class="bg-cream py-[88px] md:py-[110px] lg:py-[140px]">
       <div class="mx-auto w-full max-w-[1440px] px-[22px] md:px-10 lg:px-16">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-16">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-center md:gap-16">
         <h2 class="max-w-[620px] font-serif text-[clamp(36px,4.4vw,62px)] leading-[1.04]">Tudo bem chegar com <em class="text-accent">receio.</em></h2>
-        <p class="max-w-[360px] text-base font-light leading-[1.75] text-body md:text-[17px]">Quase todo mundo chega com alguma dessas dúvidas.</p>
       </div>
       <div class="mt-10 grid grid-cols-1 items-start gap-3 md:mt-16 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
         <article class="flex flex-col justify-between gap-[22px] bg-blush px-6 py-7 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
@@ -188,7 +191,7 @@
         </article>
         <article class="flex flex-col justify-between gap-[22px] bg-sage px-6 py-7 md:mt-12 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
           <p class="font-serif text-[26px] italic leading-[1.15] md:text-[30px]">"Não sei por onde começar."</p>
-          <p class="text-base leading-normal">Você não precisa saber.</p>
+          <p class="text-base leading-normal">Você não precisa saber. Caminharemos juntos.</p>
         </article>
         <article class="flex flex-col justify-between gap-[22px] bg-lilac px-6 py-7 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
           <p class="font-serif text-[26px] italic leading-[1.15] md:text-[30px]">"Meu problema é pequeno demais."</p>
@@ -196,7 +199,7 @@
         </article>
         <article class="flex flex-col justify-between gap-[22px] bg-sand px-6 py-7 md:mt-12 md:min-h-[260px] md:gap-10 md:px-[34px] md:py-10">
           <p class="font-serif text-[26px] italic leading-[1.15] md:text-[30px]">"E se alguém souber?"</p>
-          <p class="text-base leading-normal">Tudo fica entre nós. Sigilo total.</p>
+          <p class="text-base leading-normal">Tudo fica entre nós. Total sigilo e ética profissional.</p>
         </article>
       </div>
       </div>
@@ -214,8 +217,9 @@
       </div>
       <div class="flex flex-1 flex-col justify-center gap-[22px] px-[22px] pb-[88px] pt-16 md:gap-[30px] md:px-12 md:py-20 lg:px-20 lg:py-[110px]">
         <h2 class="font-serif text-[clamp(52px,6vw,88px)] leading-[0.95]">Sou a Rita <em class="text-accent">Maia.</em></h2>
-        <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Sou psicóloga formada pela Universidade Ibirapuera e atendo clinicamente desde 2018. Meu trabalho se apoia na psicanálise, com forte influência de Winnicott, que me ensinou a olhar para cada pessoa como alguém em construção.</p>
+        <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Sou psicóloga formada pela Universidade Ibirapuera, também com formação em Administração, e atendo clinicamente desde 2018. Meu trabalho se apoia na psicanálise, com forte influência de Winnicott, que me ensinou a olhar para cada pessoa como alguém em construção.</p>
         <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Acompanho adolescentes, adultos, idosos e casais. Sei que procurar terapia pode assustar, por isso meu compromisso é simples: um espaço seguro, sem julgamentos, no seu tempo.</p>
+        <p class="max-w-[520px] text-base font-light leading-[1.8] text-body md:text-[17px]">Fora do consultório, sou mãe e avó de duas lindas crianças.</p>
         <blockquote class="max-w-[520px] border-t border-ink/25 pt-[26px] font-serif text-2xl italic leading-[1.25] md:text-[30px]">"Escutar é abrir espaço para o que ainda não foi dito."</blockquote>
       </div>
       </div>
@@ -232,7 +236,7 @@
         <li class="grid grid-cols-[14px_minmax(0,1fr)] items-center gap-x-3.5 gap-y-2 border-b border-ink/25 py-[26px] md:grid-cols-[28px_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-8 md:py-[38px]">
           <span class="h-2.5 w-2.5 rounded-full bg-[#E9C3B5] md:h-3.5 md:w-3.5"></span>
           <h3 class="font-serif text-[40px] leading-none md:text-[clamp(40px,5vw,76px)]">Adolescentes</h3>
-          <p class="col-start-2 font-serif text-xl italic leading-[1.3] text-taupe md:col-start-auto md:text-[clamp(20px,2vw,28px)]">"Ninguém lá em casa me entende."</p>
+          <p class="col-start-2 font-serif text-xl italic leading-[1.3] text-taupe md:col-start-auto md:text-[clamp(20px,2vw,28px)]">"Ninguém me entende."</p>
         </li>
         <li class="grid grid-cols-[14px_minmax(0,1fr)] items-center gap-x-3.5 gap-y-2 border-b border-ink/25 py-[26px] md:grid-cols-[28px_minmax(0,1fr)_minmax(0,1.1fr)] md:gap-8 md:py-[38px]">
           <span class="h-2.5 w-2.5 rounded-full bg-[#B9C7B2] md:h-3.5 md:w-3.5"></span>
@@ -265,7 +269,7 @@
           <span class="text-[13px] text-taupe">O começo</span>
           <div>
             <h3 class="font-serif text-[26px] leading-[1.1] md:text-[clamp(24px,2.2vw,32px)]">O primeiro contato</h3>
-            <p class="mt-2.5 text-[15px] font-light leading-relaxed text-[#5E4F4A]">Uma conversa leve pelo WhatsApp.</p>
+            <p class="mt-2.5 text-[15px] font-light leading-relaxed text-[#5E4F4A]">Um bate-papo para nos conhecermos melhor.</p>
           </div>
         </li>
         <li class="flex min-h-[165px] w-[80%] flex-col justify-between gap-[18px] bg-blush px-[22px] py-6 md:h-[330px] md:w-auto md:gap-6 md:px-5 md:py-[26px] lg:px-[30px] lg:py-8">
@@ -306,22 +310,110 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </a>
       </div>
-      <div class="no-scrollbar -mx-[22px] mt-10 flex snap-x snap-mandatory scroll-pl-[22px] gap-3.5 overflow-x-auto px-[22px] pb-1.5 md:mx-0 md:mt-16 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0">
-        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:px-7 md:py-[34px] lg:px-10 lg:py-11">
+      <div id="depoimentos-trilho" class="no-scrollbar -mx-[22px] mt-10 flex snap-x snap-mandatory scroll-pl-[22px] gap-3.5 overflow-x-auto px-[22px] pb-1.5 md:mx-0 md:mt-16 md:scroll-pl-0 md:gap-6 md:px-0">
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
           <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
-          <blockquote class="flex-grow font-serif text-[21px] leading-[1.35] lg:text-[25px]">[Depoimento 1, a preencher]</blockquote>
-          <figcaption class="text-sm text-taupe">[Iniciais]</figcaption>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Uma ótima profissional, muito atenciosa e profunda. Tem sempre a palavra certa ou a melhor forma de enxergar as situações.</blockquote>
+          <figcaption class="text-sm text-taupe">Mariana A. · Avaliação no Google</figcaption>
         </figure>
-        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:px-7 md:py-[34px] lg:px-10 lg:py-11">
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
           <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#5F6F5A]" aria-hidden="true">"</span>
-          <blockquote class="flex-grow font-serif text-[21px] leading-[1.35] lg:text-[25px]">[Depoimento 2, a preencher]</blockquote>
-          <figcaption class="text-sm text-taupe">[Iniciais]</figcaption>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional, acolhedora e com escuta ativa. Demonstra verdadeiro amor pelo que faz, realizando seu trabalho com excelência e sempre embasada em estudos e artigos sérios.</blockquote>
+          <figcaption class="text-sm text-taupe">Maisa D. · Avaliação no Google</figcaption>
         </figure>
-        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:px-7 md:py-[34px] lg:px-10 lg:py-11">
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
           <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#7E6A8C]" aria-hidden="true">"</span>
-          <blockquote class="flex-grow font-serif text-[21px] leading-[1.35] lg:text-[25px]">[Depoimento 3, a preencher]</blockquote>
-          <figcaption class="text-sm text-taupe">[Iniciais]</figcaption>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Tem sido fundamental na minha jornada. Graças à sua condução tão centrada e atenciosa, hoje eu consigo me valorizar mais, me encontrar de verdade e, principalmente, colocar limites e dizer 'não' quando preciso. Obrigada por ser essa profissional incrível e por me dar as ferramentas para construir uma versão mais forte de mim.</blockquote>
+          <figcaption class="text-sm text-taupe">Silviane S. · Avaliação no Google</figcaption>
         </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional. Meu marido faz terapia com a Rita e, desde que iniciou o tratamento, noto muita evolução pessoal e, consequentemente, no relacionamento familiar. Muita gratidão.</blockquote>
+          <figcaption class="text-sm text-taupe">Fernanda T. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#5F6F5A]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Rita nasceu pra isso! Me fez entender minha origem e me ajudou a compreender muitas coisas da minha infância. Me ajuda a olhar para as situações com outra lente. Fazer terapia com ela foi uma das melhores decisões que tomei.</blockquote>
+          <figcaption class="text-sm text-taupe">Sayonara M. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#7E6A8C]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">A Rita é uma excelente profissional, muito atenciosa, cautelosa nas observações, com considerações pertinentes que ajudam no processo de autoconhecimento. Transmite confiança e é uma pessoa muito amável e acolhedora.</blockquote>
+          <figcaption class="text-sm text-taupe">Priscila F. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional! Faço acompanhamento com a Drª Rita há quase 4 anos e só tenho a agradecer por todo o cuidado, atenção e dedicação ao longo desse tempo. É uma profissional extremamente empática, acolhedora e competente, que realmente se importa com o bem-estar dos seus pacientes.</blockquote>
+          <figcaption class="text-sm text-taupe">Darlene C. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#5F6F5A]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Falar da Rita é muito fácil. Rita sabe ouvir, sabe te fazer refletir, sabe cuidar e principalmente incentivar. Para a Rita não tem hora. Para ela o mais importante é cuidar do seu paciente. Sempre com um sorriso no rosto e pronto para cuidar. Ótima profissional e uma pessoa maravilhosa!</blockquote>
+          <figcaption class="text-sm text-taupe">Lucas V. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#7E6A8C]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional! A psicóloga Rita Maia tem conhecimento em Psicanálise, e sabe realmente do que está falando, conduz os atendimentos com ética, sensibilidade e acolhimento. Sua escuta qualificada proporciona um ambiente seguro para reflexões e desenvolvimento pessoal. Recomendo seu trabalho pela competência técnica, dedicação e compromisso com a saúde mental.</blockquote>
+          <figcaption class="text-sm text-taupe">André B. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Encontrar um profissional de saúde mental que realmente faça a diferença em nossa jornada não é uma tarefa simples. Por isso, faço questão de registrar publicamente minha admiração, respeito e profunda gratidão pelo trabalho realizado pela terapeuta Rita.</blockquote>
+          <figcaption class="text-sm text-taupe">Andre L. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#5F6F5A]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Rita é acolhedora, me encorajou a ser minha melhor versão.</blockquote>
+          <figcaption class="text-sm text-taupe">Jonathan C. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#7E6A8C]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Passar em processo terapêutico com a Rita Maia tem sido uma experiência verdadeiramente transformadora. Ela cria um espaço seguro, livre de julgamentos, onde me sinto totalmente à vontade para me abrir. (…) Recomendo o trabalho dela de olhos fechados para qualquer pessoa que esteja buscando um suporte terapêutico de excelência e um ser humano incrível para caminhar junto nessa jornada!</blockquote>
+          <figcaption class="text-sm text-taupe">Zeca L. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Profissional e pessoa incrível. As sessões são leves, com muita harmonia, sabedoria e paz. Coração fica quentinho…</blockquote>
+          <figcaption class="text-sm text-taupe">Debora C. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#5F6F5A]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional, tivemos um acompanhamento de quase 1 ano. Tive uma evolução incrível com os direcionamentos e conselhos dela. Além disso um ser humano incrível que sabe te ouvir e dá espaço para você falar. Super recomendo.</blockquote>
+          <figcaption class="text-sm text-taupe">Dilherme S. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#7E6A8C]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Excelente profissional, atenciosa e competente. Conduz as sessões com muito cuidado e respeito, fazendo perguntas certeiras que me ajudaram a me conhecer melhor. Recomendo de olhos fechados!</blockquote>
+          <figcaption class="text-sm text-taupe">Vanessa R. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-blush px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-accent" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">A Rita é uma profissional extremamente competente, muito acolhedora e dedicada. (…) Seu trabalho faz diferença de forma positiva, me trouxe direcionamento, segurança e apoio em momentos importantes. É uma psicóloga que transmite confiança e realmente se preocupa com o bem-estar dos pacientes.</blockquote>
+          <figcaption class="text-sm text-taupe">Karen T. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-sage px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#5F6F5A]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Rita é uma excelente profissional. Muito humana, acolhedora e sensata. Com escuta atenta, ela me ajudou em várias questões e contribuiu muito para meu desenvolvimento pessoal. Recomendo de coração!</blockquote>
+          <figcaption class="text-sm text-taupe">Beatriz Z. · Avaliação no Google</figcaption>
+        </figure>
+        <figure class="flex min-h-[260px] flex-[0_0_84%] snap-start flex-col gap-7 bg-lilac px-[26px] py-8 md:min-h-[280px] md:flex-[0_0_calc((100%-24px)/2)] md:px-7 md:py-[34px] lg:flex-[0_0_calc((100%-48px)/3)] lg:px-10 lg:py-11">
+          <span class="h-[30px] font-serif text-[80px] leading-[0.5] text-[#7E6A8C]" aria-hidden="true">"</span>
+          <blockquote class="flex-grow font-serif text-[19px] leading-[1.4] lg:text-[21px]">Profissional extremamente dedicada, prestativa e comprometida com o paciente, disposição para ajudar em qualquer momento, boa comunicação e colaboração no dia a dia, contribuindo positivamente, fazendo com que realmente tenha um resultado positivo nas terapias e nas reflexões. Super indico.</blockquote>
+          <figcaption class="text-sm text-taupe">Joelma S. · Avaliação no Google</figcaption>
+        </figure>
+      </div>
+      <div class="mt-8 flex items-center gap-6">
+        <div class="relative h-px flex-1 bg-ink/20" role="progressbar" aria-label="Progresso dos depoimentos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="depoimentos-progresso">
+          <div id="depoimentos-barra" class="absolute inset-y-[-1px] left-0 w-0 bg-accent transition-[width] duration-300 ease-out"></div>
+        </div>
+        <div class="hidden gap-3 md:flex">
+        <button type="button" id="depoimentos-anterior" aria-label="Depoimentos anteriores" class="flex h-12 w-12 items-center justify-center rounded-full border border-ink/40 hover:bg-ink hover:text-cream">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </button>
+        <button type="button" id="depoimentos-proximo" aria-label="Próximos depoimentos" class="flex h-12 w-12 items-center justify-center rounded-full border border-ink/40 hover:bg-ink hover:text-cream">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        </div>
       </div>
       </div>
     </section>
@@ -337,7 +429,7 @@
             <span class="text-[17px] font-medium md:text-[19px]">O atendimento é online ou presencial?</span>
             <span class="faq-plus inline-block flex-none font-serif text-[30px] leading-none text-accent" aria-hidden="true">+</span>
           </button>
-          <div id="faq-a0" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">Os dois. Presencialmente no consultório em Jundiaí, na Vila Rami, ou por videochamada, de onde você estiver.</p></div></div>
+          <div id="faq-a0" class="faq-body"><div class="overflow-hidden"><p class="pb-[22px] pr-5 text-[15px] font-light leading-[1.7] text-body md:pb-7 md:pr-11">Os dois. Presencialmente no consultório em Jundiaí, na Vila Vianelo</p></div></div>
         </div>
         <div class="faq-item border-t border-ink/30" data-open="false">
           <button type="button" class="faq-btn flex min-h-[56px] w-full items-center justify-between gap-5 py-[22px] text-left md:py-7" aria-expanded="false" aria-controls="faq-a1">
@@ -375,8 +467,8 @@
     <section id="contato" class="bg-blush py-[88px] md:py-[110px] lg:py-[140px]">
       <div class="mx-auto w-full max-w-[1440px] flex flex-col gap-10 px-[22px] md:flex-row md:items-center md:gap-14 md:px-10 lg:gap-24 lg:px-16">
       <div class="flex flex-1 flex-col gap-7">
-        <h2 class="font-serif text-[clamp(42px,5.3vw,76px)] leading-none">Há dores que não precisam ser carregadas <em class="text-accent">sozinha.</em></h2>
-        <p class="max-w-[460px] text-base font-light leading-[1.7] text-body md:text-lg">O primeiro passo costuma ser o mais difícil. Me conte o que te traz e eu já chego sabendo como te receber.</p>
+        <h2 class="font-serif text-[clamp(42px,5.3vw,76px)] leading-none">Há dores que não precisam ser carregadas <em class="text-accent">sozinhas.</em></h2>
+        <p class="max-w-[460px] text-base font-light leading-[1.7] text-body md:text-lg">O primeiro passo pode ser difícil. Compartilhe comigo o que te trouxe à psicoterapia e, a partir disso, construiremos juntos um espaço de acolhimento e cuidado.</p>
       </div>
       <div class="flex flex-col gap-[22px] bg-cream px-6 py-8 shadow-[0_24px_60px_rgba(61,48,44,.08)] md:w-[400px] md:flex-none md:gap-7 md:px-11 md:py-12 lg:w-[460px]">
         <div class="flex flex-col gap-3">
@@ -388,6 +480,7 @@
             <option value="luto">Um luto ou perda recente</option>
             <option value="autoconhecimento">Autoconhecimento</option>
             <option value="outro">Ainda não sei nomear</option>
+            <option value="outro-assunto">Outro assunto</option>
           </select>
         </div>
         <a id="whatsapp-cta" href="#" target="_blank" rel="noopener" class="flex min-h-[48px] w-full items-center justify-between rounded-sm bg-accent px-[26px] py-5 text-[15px] text-white hover:opacity-90">
@@ -408,12 +501,13 @@
       <p class="text-[15px] font-light leading-[1.7] text-paper/75">Psicóloga, CRP SP 06/154166<br>Psicanálise de orientação winnicottiana</p>
       <div class="flex flex-col gap-2.5 leading-[1.7]">
         <span class="text-paper/55">Consultório</span>
-        <address class="not-italic">Rua União, 454<br>Vila Rami, Jundiaí/SP</address>
+        <address class="not-italic">R. Atílio Vianelo, 506<br>Vila Vianelo, Jundiaí/SP<br>13202-455</address>
       </div>
       <div class="flex flex-col gap-2.5 leading-[1.7]">
         <span class="text-paper/55">Contato</span>
         <a id="whatsapp-footer" class="self-start hover:opacity-70" href="#" target="_blank" rel="noopener">WhatsApp</a>
         <a class="self-start hover:opacity-70" href="https://www.instagram.com/psicoritamaia/" target="_blank" rel="noopener">@psicoritamaia</a>
+        <a class="self-start [overflow-wrap:anywhere] hover:opacity-70" href="mailto:psicoritamaia@gmail.com">psicoritamaia@gmail.com</a>
       </div>
       <div class="flex flex-col gap-2.5 leading-[1.7]">
         <span class="text-paper/55">Atendimento</span>
@@ -434,10 +528,15 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 
+  <!-- WhatsApp flutuante -->
+  <a id="whatsapp-flutuante" href="#" target="_blank" rel="noopener" aria-label="Conversar com a Rita no WhatsApp" class="wa-flutuante fixed right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-forest text-cream ring-2 ring-cream shadow-[0_14px_34px_rgba(38,28,25,.3)] transition-transform hover:scale-105 md:right-8 md:h-16 md:w-16">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.01c0-5.19 4.23-9.41 9.42-9.41 2.51 0 4.88.98 6.65 2.76a9.35 9.35 0 0 1 2.75 6.66c0 5.19-4.23 9.41-9.41 9.41zm8.01-17.42A11.26 11.26 0 0 0 12.05.75C5.8.75.72 5.83.72 12.08c0 2 .52 3.95 1.52 5.66L.62 23.62l6.02-1.58a11.3 11.3 0 0 0 5.4 1.38h.01c6.24 0 11.33-5.08 11.33-11.33 0-3.03-1.18-5.87-3.32-8.01z"/></svg>
+  </a>
+
   <script>
     // ===== WhatsApp =====
-    // TROCAR pelo número real da Rita: 55 + DDD + número, só dígitos
-    const TELEFONE = '5511000000000';
+    // 55 + DDD + número, só dígitos
+    const TELEFONE = '5511914977210';
     const WA = 'https://wa.me/' + TELEFONE;
 
     const motivos = {
@@ -446,7 +545,8 @@
       relacionamentos: 'tenho enfrentado dificuldades nos meus relacionamentos',
       luto: 'estou passando por um luto',
       autoconhecimento: 'busco autoconhecimento',
-      outro: 'ainda não sei nomear direito o que estou sentindo'
+      outro: 'ainda não sei nomear direito o que estou sentindo',
+      'outro-assunto': 'gostaria de conversar sobre outro assunto'
     };
 
     const select = document.getElementById('motivo');
@@ -458,8 +558,27 @@
     select.addEventListener('change', atualizarWhatsApp);
     atualizarWhatsApp();
 
-    document.getElementById('whatsapp-footer').href =
-      WA + '?text=' + encodeURIComponent('Olá, Rita! Vim pelo site e gostaria de agendar uma consulta.');
+    const msgPadrao = WA + '?text=' + encodeURIComponent('Olá, Rita! Vim pelo site e gostaria de agendar uma consulta.');
+    document.getElementById('whatsapp-footer').href = msgPadrao;
+    document.getElementById('whatsapp-flutuante').href = msgPadrao;
+
+    // ===== Depoimentos (carrossel) =====
+    const trilho = document.getElementById('depoimentos-trilho');
+    function passo() { return trilho.firstElementChild.offsetWidth + parseFloat(getComputedStyle(trilho).columnGap); }
+    document.getElementById('depoimentos-anterior').addEventListener('click', function () { trilho.scrollBy({ left: -passo(), behavior: 'smooth' }); });
+    document.getElementById('depoimentos-proximo').addEventListener('click', function () { trilho.scrollBy({ left: passo(), behavior: 'smooth' }); });
+
+    const progresso = document.getElementById('depoimentos-progresso');
+    const barra = document.getElementById('depoimentos-barra');
+    function atualizarProgresso() {
+      // largura = parte visível + quanto já rolou, em relação ao total
+      const pct = Math.min(100, (trilho.scrollLeft + trilho.clientWidth) / trilho.scrollWidth * 100);
+      barra.style.width = pct + '%';
+      progresso.setAttribute('aria-valuenow', Math.round(pct));
+    }
+    trilho.addEventListener('scroll', atualizarProgresso, { passive: true });
+    window.addEventListener('resize', atualizarProgresso);
+    atualizarProgresso();
 
     // ===== FAQ (um aberto por vez) =====
     const itens = document.querySelectorAll('.faq-item');
